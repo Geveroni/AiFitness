@@ -1,0 +1,11 @@
+{
+  "name": "@aifitness/api-client",
+  "version": "0.1.0",
+  "private": true,
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "dependencies": {
+    "@aifitness/types": "*",
+    "@supabase/supabase-js": "^2.49.0"
+  }
+}

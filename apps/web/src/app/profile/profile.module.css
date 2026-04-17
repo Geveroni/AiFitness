@@ -1,0 +1,76 @@
+.main {
+  max-width: 650px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.main h1 {
+  font-size: 2rem;
+  margin-bottom: 0.25rem;
+}
+
+.subtitle {
+  color: #888;
+  margin-bottom: 2rem;
+}
+
+.section {
+  margin-bottom: 2rem;
+}
+
+.section h2 {
+  font-size: 1.05rem;
+  color: #ccc;
+  margin-bottom: 0.75rem;
+}
+
+.options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.option {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  color: #aaa;
+  padding: 0.55rem 1.1rem;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-transform: capitalize;
+}
+
+.option:hover {
+  border-color: var(--accent);
+  color: var(--fg);
+}
+
+.selected {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+.saveBtn {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.5rem;
+}
+
+.saveBtn:hover {
+  background: var(--accent-hover);
+}
+
+.hint {
+  color: #555;
+  font-size: 0.8rem;
+  margin-top: 0.75rem;
+}
