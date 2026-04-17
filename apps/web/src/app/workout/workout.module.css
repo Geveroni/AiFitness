@@ -1,15 +1,18 @@
 .main {
-  max-width: 1000px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 2rem 1.5rem;
+  padding: 1.5rem;
 }
 
-.setup, .ready {
+/* Setup / Ready / Complete screens */
+.setup,
+.ready {
   text-align: center;
   padding: 3rem 0;
 }
 
-.setup h1, .ready h1 {
+.setup h1,
+.ready h1 {
   font-size: 2rem;
   margin-bottom: 0.5rem;
 }
@@ -46,7 +49,9 @@
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .stats {
@@ -61,7 +66,7 @@
 .exerciseList {
   text-align: left;
   max-width: 500px;
-  margin: 0 auto 2rem;
+  margin: 0 auto 1.5rem;
 }
 
 .exerciseItem {
@@ -92,83 +97,153 @@
   flex-shrink: 0;
 }
 
-.active {
-  padding: 1rem 0;
+.trackingBadge {
+  display: inline-block;
+  background: rgba(74, 222, 128, 0.15);
+  color: var(--success);
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 6px;
+  margin-left: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
 }
 
-.progress {
-  text-align: center;
-  color: #888;
-  font-size: 0.9rem;
+.cameraHint {
+  color: #666;
+  font-size: 0.85rem;
   margin-bottom: 1.5rem;
 }
 
-.exerciseDisplay {
+/* Active workout - camera + HUD layout */
+.activeLayout {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 2fr 1fr;
   gap: 1.5rem;
-  margin-bottom: 2rem;
-  min-height: 350px;
+  align-items: start;
 }
 
-.avatarPlaceholder,
-.cameraPlaceholder {
+.cameraSection {
+  position: sticky;
+  top: 1.5rem;
+}
+
+.infoSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Rest overlay */
+.restOverlay {
   background: var(--card-bg);
-  border: 1px dashed var(--card-border);
+  border: 2px solid var(--accent);
   border-radius: 16px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: #666;
-  font-size: 0.9rem;
-}
-
-.avatarPlaceholder small,
-.cameraPlaceholder small {
-  color: #444;
-  font-size: 0.75rem;
-  margin-top: 0.25rem;
-}
-
-.exerciseInfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  padding: 2rem;
   text-align: center;
 }
 
-.exerciseInfo h1 {
-  font-size: 2rem;
-  margin-bottom: 0.75rem;
-}
-
-.setInfo {
-  font-size: 1.4rem;
+.restOverlay h2 {
   color: var(--accent);
-  font-weight: 700;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
-.instructions {
-  color: #999;
-  font-size: 0.95rem;
+.countdown {
+  font-size: 3rem;
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.restOverlay p {
+  color: #888;
+  font-size: 0.85rem;
+  margin-top: 0.5rem;
+}
+
+/* Instructions box */
+.instructionBox {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 1rem;
+  font-size: 0.85rem;
   line-height: 1.5;
-  max-width: 350px;
 }
 
-.active .primaryBtn {
+.instructionBox strong {
+  color: #aaa;
   display: block;
-  margin: 0 auto;
+  margin-bottom: 0.3rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
-@media (max-width: 700px) {
-  .exerciseDisplay {
+.instructionBox p {
+  color: #999;
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.skipBtn {
+  background: transparent;
+  border: 1px solid var(--card-border);
+  color: #888;
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.skipBtn:hover {
+  border-color: var(--accent);
+  color: var(--fg);
+}
+
+.progress {
+  color: #555;
+  font-size: 0.85rem;
+}
+
+/* Results list */
+.resultsList {
+  max-width: 450px;
+  margin: 1.5rem auto 2rem;
+  text-align: left;
+}
+
+.resultItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--card-border);
+  font-size: 0.9rem;
+}
+
+.resultItem strong {
+  flex: 1;
+}
+
+.resultItem span {
+  min-width: 70px;
+  text-align: right;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .activeLayout {
     grid-template-columns: 1fr;
   }
-  .avatarPlaceholder,
-  .cameraPlaceholder {
-    min-height: 150px;
+
+  .cameraSection {
+    position: static;
   }
 }
