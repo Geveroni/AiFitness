@@ -61,10 +61,27 @@ export function usePoseDetection({ enabled, onResults }: UsePoseDetectionOptions
     const video = videoRef.current;
     if (!video) return;
 
-    const stream = await navigator.mediaDevices.getUserMedia({
-      video: { facingMode: "user", width: 640, height: 480 },
-      audio: false,
-    });
+    // Check if any camera exists
+    const devices = await navigator.mediaDevices.enumerateDevices();
+    const cameras = devices.filter((d) => d.kind === "videoinput");
+    if (cameras.length === 0) {
+      throw new Error("No camera found. Connect a webcam or use a phone.");
+    }
+
+    // Try preferred config first, fall back to basic
+    let stream: MediaStream;
+    try {
+      stream = await navigator.mediaDevices.getUserMedia({
+        video: { facingMode: "user", width: { ideal: 640 }, height: { ideal: 480 } },
+        audio: false,
+      });
+    } catch {
+      // Fallback: just request any camera
+      stream = await navigator.mediaDevices.getUserMedia({
+        video: true,
+        audio: false,
+      });
+    }
 
     streamRef.current = stream;
     video.srcObject = stream;

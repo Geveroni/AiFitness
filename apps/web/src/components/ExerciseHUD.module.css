@@ -53,6 +53,53 @@
   font-weight: 500;
 }
 
+.repDetails {
+  background: rgba(108, 99, 255, 0.08);
+  border-radius: 10px;
+  padding: 0.6rem 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.repHeader {
+  font-size: 0.7rem;
+  color: var(--accent);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.3rem;
+}
+
+.repStats {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #aaa;
+  margin-bottom: 0.3rem;
+}
+
+.good { color: var(--success); }
+.warning { color: var(--warning); }
+
+.aiTip {
+  background: rgba(108, 99, 255, 0.12);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  padding: 0.6rem 0.75rem;
+  font-size: 0.85rem;
+  color: #ccc;
+  line-height: 1.4;
+  margin-bottom: 0.5rem;
+}
+
+.aiLabel {
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.25rem;
+}
+
 .angle {
   text-align: center;
   font-size: 0.75rem;

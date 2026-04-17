@@ -32,6 +32,7 @@ export default function WorkoutPage() {
   const voice = useVoiceCoach();
   const prevRepsRef = useRef(0);
   const prevViolationsRef = useRef<string[]>([]);
+  const prevAITipRef = useRef("");
 
   // Generate workout
   async function generateWorkout() {
@@ -105,6 +106,27 @@ export default function WorkoutPage() {
         }
       }
       prevViolationsRef.current = result.violations;
+
+      // Voice: announce movement feedback on rep complete
+      if (result.lastRepAnalysis && result.reps > 0) {
+        const rep = result.lastRepAnalysis;
+        if (rep.tempo === "too_fast") {
+          voice.speak("Slow down. Control the movement.", "tempo", 8000);
+        } else if (rep.tempo === "too_slow") {
+          voice.speak("Pick up the pace a little.", "tempo", 8000);
+        }
+        for (const d of rep.lateralDrift) {
+          if (d.direction !== "stable") {
+            voice.announceCorrection(d.description);
+          }
+        }
+      }
+
+      // Voice: speak AI coaching tip when it arrives
+      if (result.aiCoachingTip && result.aiCoachingTip !== prevAITipRef.current) {
+        prevAITipRef.current = result.aiCoachingTip;
+        voice.speak(result.aiCoachingTip, "ai_tip", 10000);
+      }
     },
     [wkState, currentExercise, tracker, voice, currentSet]
   );
